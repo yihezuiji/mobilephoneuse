@@ -1,0 +1,28 @@
+library(readxl)
+library(dplyr)
+library(tidyr)
+library(tidyverse)
+library(data.table)
+library(stringr)
+library(rms)
+library(survival)
+library(car)
+library(multcomp)
+library(mediation)
+library(effects)
+library(reshape2)
+library(ggplot2)
+library(ggpubr)
+library(ggsci)
+library(ggbeeswarm)
+library(cowplot)
+library(circlize)
+library(cmprsk)
+library(forestplot)
+library(ggrcs)
+library(reshape2)
+library(lavaan)
+model_simple <-  '+scale(log10(Age))+Sex+scale(log10(BMI))+Ethnic+College+TDIstage'
+model_main <- '+scale(log10(Age))+Sex+scale(log10(BMI))+Ethnic+College+Alcohol+Smoking+TDIstage'
+model_stroke <- '+scale(log10(Age))+Sex+scale(log10(BMI))+Ethnic+College+Alcohol+Smoking+TDIstage+scale(log10(DBP))+scale(log10(SBP))'
+model_BrainStructure <- '+scale(log10(Age))+Sex+scale(log10(BMI))+Ethnic+College+Alcohol+Smoking+TDIstage+EICV+Imagingsite'
