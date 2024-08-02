@@ -26,3 +26,16 @@ model_simple <-  '+scale(log10(Age))+Sex+scale(log10(BMI))+Ethnic+College+TDIsta
 model_main <- '+scale(log10(Age))+Sex+scale(log10(BMI))+Ethnic+College+Alcohol+Smoking+TDIstage'
 model_stroke <- '+scale(log10(Age))+Sex+scale(log10(BMI))+Ethnic+College+Alcohol+Smoking+TDIstage+scale(log10(DBP))+scale(log10(SBP))'
 model_BrainStructure <- '+scale(log10(Age))+Sex+scale(log10(BMI))+Ethnic+College+Alcohol+Smoking+TDIstage+EICV+Imagingsite'
+
+# Cox proportional hazard model
+library(survival)
+mydata <- Analysis_Cox_Exposure_Outcome
+
+fit <- coxph(Surv(Outcome_period,Outcome_status==1) ~ Exposure +Cov1+Cov2+Cov3+Cov4+Cov5+Cov6+Cov7+Cov8, data = mydata)
+summary(fit)
+
+# PH test
+res.cox <- coxph(Surv(Outcome_period,Outcome_status==1) ~ Exposure +Cov1+Cov2+Cov3+Cov4+Cov5+Cov6+Cov7+Cov8, data = mydata)
+cox.zph(res.cox)
+
+
